@@ -1,0 +1,54 @@
+// Define the http/https for host address
+@HostAddress = http://localhost:5162 
+
+// Define the http request to from the API endpoint
+### GET All games
+GET {{HostAddress}}/games
+### GET Specified game
+GET {{HostAddress}}/games/1
+### GET Specified game (404 Not Found)
+GET {{HostAddress}}/games/100
+### POST Create new game
+POST {{HostAddress}}/games
+Content-Type: application/json
+
+{
+    "name": "Street Fight",
+    "genreId": 1,
+    "price": 10.00,
+    "releaseDate": "2015-10-20" 
+}
+### POST Create error new game
+POST {{HostAddress}}/games
+Content-Type: application/json
+
+{
+    "name": "",
+    "genreId": 2,
+    "price": 10.00,
+    "releaseDate": "2015-10-20" 
+}
+
+### PUT Update game
+PUT {{HostAddress}}/games/1
+Content-Type: application/json
+
+{
+    "name": "Street Fighter II",
+    "genreId": 1,
+    "price": 21.99,
+    "releaseDate": "1992-07-01"
+}
+### PUT Update game (404 Not Found)
+PUT {{HostAddress}}/games/100
+Content-Type: application/json
+
+{
+    "name": "Street Fighter II",
+    "genreId": 2,
+    "price": 21.99,
+    "releaseDate": "1992-07-01"
+}
+
+### DELETE Delete game
+DELETE {{HostAddress}}/games/1
